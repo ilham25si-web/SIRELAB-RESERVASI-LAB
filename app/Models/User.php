@@ -29,4 +29,24 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+protected $primaryKey = 'id_user';
+
+protected $fillable = ['nama', 'identitas', 'email', 'password', 'role', 'no_hp'];
+
+public function reservasi()
+{
+    return $this->hasMany(Reservasi::class, 'id_user', 'id_user');
+}
+
+public function reservasiDiverifikasi()
+{
+    return $this->hasMany(Reservasi::class, 'diverifikasi_oleh', 'id_user');
+}
+
+public function laporan()
+{
+    return $this->hasMany(Laporan::class, 'id_user', 'id_user');
+}
+
 }
