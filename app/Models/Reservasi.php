@@ -20,7 +20,7 @@ public function user()
     return $this->belongsTo(User::class, 'id_user', 'id_user');
 }
 
-public function laboratorium()
+public function Laboratorium()
 {
     return $this->belongsTo(Laboratorium::class, 'id_lab', 'id_lab');
 }
@@ -29,4 +29,5 @@ public function verifikator()
 {
     return $this->belongsTo(User::class, 'diverifikasi_oleh', 'id_user');
 }
+
 }
