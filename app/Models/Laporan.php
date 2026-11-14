@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Laporan extends Model
 {
-protected $table = 'laporan';
-protected $primaryKey = 'id_laporan';
-protected $timestamps = false;
+public $table = 'laporan';
+public $primaryKey = 'id_laporan';
+public $timestamps = false;
 protected $fillable = ['id_user', 'periode_awal', 'periode_akhir', 'tanggal_cetak'];
 
 public function user()

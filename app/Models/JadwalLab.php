@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class JadwalLab extends Model
 {
-protected $table = 'jadwal_lab';
-protected $primaryKey = 'id_jadwal';
-protected $timestamps = false;
+public $table = 'jadwal_lab';
+public $primaryKey = 'id_jadwal';
+public $timestamps = false;
 protected $fillable = ['id_lab', 'hari', 'jam_mulai', 'jam_selesai', 'keterangan'];
 
 public function laboratorium()

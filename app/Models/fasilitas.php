@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fasilitas extends Model
 {
-protected $table = 'fasilitas';
-protected $primaryKey = 'id_fasilitas';
+public $table = 'fasilitas';
+public $primaryKey = 'id_fasilitas';
+public $timestamps = false;
 protected $fillable = ['nama_fasilitas', 'deskripsi'];
 
 public function laboratorium()

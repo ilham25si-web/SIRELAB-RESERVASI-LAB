@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('lab_fasilitas', function (Blueprint $table) {
             $table->id('id_lab_fasilitas');
-            $table->foreignId('id_lab')->constrained('laboratorium', id_lab);
-            $table->foreignId('id_fasilitas')->constrained('fasilitas', id_fasilitas);
+            $table->foreignId('id_lab')->constrained('laboratorium', 'id_lab');
+            $table->foreignId('id_fasilitas')->constrained('fasilitas', 'id_fasilitas');
             $table->integer('jumlah');
-            $table->enum('kondisi', ['baik', rusak]);
+            $table->enum('kondisi', ['baik', 'rusak']);
         });
     }
 

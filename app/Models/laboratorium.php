@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Laboratorium extends Model
 {
 
-protected $table = 'laboratorium';
-protected $primaryKey = 'id_lab';
-protected $timestamps = false;
+public $table = 'laboratorium';
+public $primaryKey = 'id_lab';
+public $timestamps = false;
 protected $fillable = ['nama_lab', 'lokasi', 'kapasitas', 'deskripsi', 'status'];
 
 public function reservasi()
