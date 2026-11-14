@@ -8,6 +8,7 @@ class Laporan extends Model
 {
 protected $table = 'laporan';
 protected $primaryKey = 'id_laporan';
+protected $timestamps = false;
 protected $fillable = ['id_user', 'periode_awal', 'periode_akhir', 'tanggal_cetak'];
 
 public function user()

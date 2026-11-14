@@ -20,7 +20,7 @@ public function user()
     return $this->belongsTo(User::class, 'id_user', 'id_user');
 }
 
-public function Laboratorium()
+public function laboratorium()
 {
     return $this->belongsTo(Laboratorium::class, 'id_lab', 'id_lab');
 }

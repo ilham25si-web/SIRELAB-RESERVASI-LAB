@@ -8,6 +8,7 @@ class JadwalLab extends Model
 {
 protected $table = 'jadwal_lab';
 protected $primaryKey = 'id_jadwal';
+protected $timestamps = false;
 protected $fillable = ['id_lab', 'hari', 'jam_mulai', 'jam_selesai', 'keterangan'];
 
 public function laboratorium()

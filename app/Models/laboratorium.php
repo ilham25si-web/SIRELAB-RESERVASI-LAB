@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class laboratorium extends Model
+class Laboratorium extends Model
 {
 
 protected $table = 'laboratorium';
 protected $primaryKey = 'id_lab';
-protected $fillable = ['nama_lab', 'lokasi', 'kapasitas', 'deskripsi', 'foto', 'status'];
+protected $timestamps = false;
+protected $fillable = ['nama_lab', 'lokasi', 'kapasitas', 'deskripsi', 'status'];
 
 public function reservasi()
 {
@@ -24,7 +25,6 @@ public function jadwal()
 public function fasilitas()
 {
     return $this->belongsToMany(Fasilitas::class, 'lab_fasilitas', 'id_lab', 'id_fasilitas')
-        ->withPivot('jumlah', 'kondisi')
-        ->withTimestamps();
+        ->withPivot('jumlah', 'kondisi');
 }
 }
