@@ -27,7 +27,12 @@ class AuthController extends Controller
         // 3. jika berhasil, redirect ke dashboard
             request()->session()->regenerate();
         
-            return redirect('/');
+            if (Auth::user()->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+        
+        return redirect()->route('pengguna.dashboard');
+
         }
 
         // 4. Gagal : kembali ke form dengan pesan
