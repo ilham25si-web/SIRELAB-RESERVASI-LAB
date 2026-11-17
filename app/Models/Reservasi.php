@@ -30,4 +30,9 @@ public function verifikator()
     return $this->belongsTo(User::class, 'diverifikasi_oleh', 'id_user');
 }
 
+public function lampiran()
+{
+    return $this->hasMany(ReservasiLampiran::class, 'id_reservasi', 'id_reservasi');
+}
+
 }
