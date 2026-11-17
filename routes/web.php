@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LaboratoriumController;
 
 
 Route::get('/', function () {
@@ -21,3 +22,7 @@ Route::get('/pengguna', function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Laboratorium routes
+Route::get('/laboratorium', [LaboratoriumController::class, 'index'])
+    ->name('laboratorium.index')
+    ->middleware(['auth', 'role:pengguna']);
