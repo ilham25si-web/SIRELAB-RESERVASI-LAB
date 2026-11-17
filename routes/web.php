@@ -26,3 +26,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/laboratorium', [LaboratoriumController::class, 'index'])
     ->name('laboratorium.index')
     ->middleware(['auth', 'role:pengguna']);
+
+Route::get('/laboratorium/{laboratorium}', [LaboratoriumController::class, 'show'])->name('laboratorium.show');
