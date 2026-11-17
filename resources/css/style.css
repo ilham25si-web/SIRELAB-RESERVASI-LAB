@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+    color: #1c2433;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: #12315c;
+    color: #fff;
+}
+
+header form { margin: 0; }
+
+button {
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 6px;
+    background: #0e8f8a;
+    color: #fff;
+    cursor: pointer;
+}
+
+main {
+    max-width: 1000px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
