@@ -33,3 +33,7 @@ Route::get('/laboratorium/{laboratorium}', [LaboratoriumController::class, 'show
 Route::get('/laboratorium/{laboratorium}/reservasi', [ReservasiController::class, 'create'])
     ->name('reservasi.create')
     ->middleware(['auth', 'role:pengguna']);
+
+Route::post('/laboratorium/{laboratorium}/reservasi', [ReservasiController::class, 'store'])
+    ->name('reservasi.store')
+    ->middleware(['auth', 'role:pengguna']);

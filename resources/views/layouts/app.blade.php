@@ -19,6 +19,9 @@
     </header>
 
     <main>
+        @if (session('sukses'))
+            <div>{{ session('sukses') }}</div>
+        @endif
         @yield('isi')
     </main>
 </body>

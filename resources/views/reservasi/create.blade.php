@@ -6,7 +6,7 @@
     <h1>Reservasi {{ $laboratorium->nama_lab }}</h1>
     <p>{{ $laboratorium->lokasi }} - kapasitas maksimal {{ $laboratorium->kapasitas }} orang</p>
 
-    <form method="POST" action="#" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('reservasi.store', $laboratorium->id_lab) }}" enctype="multipart/form-data">
         @csrf
 
         <div>
