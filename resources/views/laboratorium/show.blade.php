@@ -24,6 +24,6 @@
             <li>Tidak ada jadwal tetap.</li>
         @endforelse
     </ul>
-
+    <a href="{{ route('reservasi.create', $laboratorium->id_lab) }}">Reservasi lab ini</a>
     <a href="{{ route('laboratorium.index') }}">Kembali</a>
 @endsection

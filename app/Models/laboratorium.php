@@ -10,7 +10,7 @@ class Laboratorium extends Model
 public $table = 'laboratorium';
 public $primaryKey = 'id_lab';
 public $timestamps = false;
-protected $fillable = ['nama_lab', 'lokasi', 'kapasitas', 'deskripsi', 'status'];
+protected $fillable = ['nama_lab', 'lokasi', 'kapasitas', 'deskripsi', 'status', 'foto'];
 
 public function reservasi()
 {

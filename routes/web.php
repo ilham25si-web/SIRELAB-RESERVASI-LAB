@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaboratoriumController;
+use App\Http\Controllers\ReservasiController;
 
 
 Route::get('/', function () {
@@ -28,3 +29,7 @@ Route::get('/laboratorium', [LaboratoriumController::class, 'index'])
     ->middleware(['auth', 'role:pengguna']);
 
 Route::get('/laboratorium/{laboratorium}', [LaboratoriumController::class, 'show'])->name('laboratorium.show');
+
+Route::get('/laboratorium/{laboratorium}/reservasi', [ReservasiController::class, 'create'])
+    ->name('reservasi.create')
+    ->middleware(['auth', 'role:pengguna']);
