@@ -9,6 +9,7 @@
 <body>
     <header>
         <strong>Reservasi Laboratorium PCR</strong>
+        @auth
         <div>
         <span>{{ auth()->user()->nama }}</span>
         <form method="POST" action="{{ route('logout') }}" style="display:inline">
@@ -16,6 +17,7 @@
             <button type="submit">Keluar</button>
         </form>
     </div>
+    @endauth
     </header>
 
     <main>

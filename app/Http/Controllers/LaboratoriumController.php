@@ -9,8 +9,17 @@ class LaboratoriumController extends Controller
 {
     public function index(Request $request)
     {
-        // ... isi index punyamu, jangan diubah
-    }
+        $labs = Laboratorium::query()
+        ->where('status', 'aktif')
+        ->when($request->filled('q'), fn ($query) => $query->where('nama_lab', 'like', '%' . $request->q . '%'))
+        ->when($request->filled('kapasitas'), fn ($query) => $query->where('kapasitas', '>=', $request->kapasitas))
+        ->orderBy('nama_lab')
+        ->paginate(6)
+        ->withQueryString();
+
+    return view('laboratorium.index', compact('labs'));
+}
+    
 
     public function show(Laboratorium $laboratorium)
     {

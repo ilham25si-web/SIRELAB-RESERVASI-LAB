@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Laboratorium;
 use App\Models\Reservasi;
+use App\Models\JadwalLab;
 use Illuminate\Support\Facades\Auth;
 
 class ReservasiController extends Controller
@@ -28,6 +29,31 @@ class ReservasiController extends Controller
         'keperluan'      => 'required|string|max:255',
         'jumlah_peserta' => 'required|integer|min:1|max:' . $laboratorium->kapasitas,
     ]);
+
+    // A. bentrok dengan reservasi yang sudah disetujui
+    $bentrokReservasi = Reservasi::where('id_lab', $laboratorium->id_lab)
+        ->where('tanggal', $request->tanggal)
+        ->where('status', 'disetujui')
+        ->where('jam_mulai', '<', $request->jam_selesai)
+        ->where('jam_selesai', '>', $request->jam_mulai)   
+        ->exists();
+
+    // B. bentrok dengan jadwal tetap lab
+    $namaHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    $hari = $namaHari[\Carbon\Carbon::parse($request->tanggal)->dayOfWeek];
+
+    $bentrokJadwal = JadwalLab::where('id_lab', $laboratorium->id_lab) 
+        ->where('hari', $hari)
+        ->where('jam_mulai', '<', $request->jam_selesai)
+        ->where('jam_selesai', '>', $request->jam_mulai)
+        ->exists();
+
+    // C. tolak kalau salah satunya true
+    if ($bentrokReservasi || $bentrokJadwal) {
+        return back()
+            ->withErrors(['jam_mulai' => 'Jam tersebut bentrok dengan reservasi atau jadwal lab lain.'])
+            ->withInput();
+    }
 
     // 3. Simpan
     $reservasi = new Reservasi();

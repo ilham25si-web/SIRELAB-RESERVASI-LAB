@@ -116,16 +116,11 @@ class DatabaseSeeder extends Seeder
         $labJK->fasilitas()->attach($switch->id_fasilitas, ['jumlah' => 4, 'kondisi' => 'baik']);
         $labJK->fasilitas()->attach($kabelLAN->id_fasilitas, ['jumlah' => 30, 'kondisi' => 'baik']);
         $labJK->fasilitas()->attach($modem->id_fasilitas, ['jumlah' => 1, 'kondisi' => 'rusak']);
-        $labJK->fasilitas()->attach($komputer->id_fasilitas, ['jumlah' => 25, 'kondisi' => 'baik']);
-
 
         $labSO->fasilitas()->attach($smartboard->id_fasilitas, ['jumlah' => 1, 'kondisi' => 'baik']);
-        $labSO->fasilitas()->attach($komputer->id_fasilitas, ['jumlah' => 30, 'kondisi' => 'baik']);
 
-        $labPFW->fasilitas()->attach($komputer->id_fasilitas, ['jumlah' => 20, 'kondisi' => 'baik']);
         $labPFW->fasilitas()->attach($smartboard->id_fasilitas, ['jumlah' => 1, 'kondisi' => 'baik']);
 
-        $labBD->fasilitas()->attach($komputer->id_fasilitas, ['jumlah' => 15, 'kondisi' => 'baik']);
         $labBD->fasilitas()->attach($smartboard->id_fasilitas, ['jumlah' => 1, 'kondisi' => 'baik']);
     
     
