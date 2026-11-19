@@ -28,6 +28,8 @@ class ReservasiController extends Controller
         'jam_selesai'    => 'required|after:jam_mulai',
         'keperluan'      => 'required|string|max:255',
         'jumlah_peserta' => 'required|integer|min:1|max:' . $laboratorium->kapasitas,
+        'lampiran'       => 'nullable|array|max:5',
+        'lampiran.*'     => 'file|mimes:pdf,jpg,jpeg,png|max:2048',
     ]);
 
     // A. bentrok dengan reservasi yang sudah disetujui
@@ -65,6 +67,18 @@ class ReservasiController extends Controller
     $reservasi->id_lab         = $laboratorium->id_lab;
     $reservasi->id_user        = Auth::user()->id_user;
     $reservasi->save();
+
+    if ($request->hasFile('lampiran')) {
+        foreach ($request->file('lampiran') as $file) {
+        $path = $file->store('lampiran', 'public');
+
+            $reservasi->lampiran()->create([
+                'id_reservasi' => $reservasi->id_reservasi,
+                'nama_asli' => $file->getClientOriginalName(),
+                'path' => $path,
+                ]);
+        }
+    }
 
     // 4. Kembali dengan pesan
     return redirect()

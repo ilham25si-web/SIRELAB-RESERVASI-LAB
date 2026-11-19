@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('reservasi_lampiran', function (Blueprint $table) {
             $table->id('id_lampiran');
             $table->foreignId('id_reservasi')->constrained('reservasi', 'id_reservasi')->cascadeOnDelete();
-            // nama_asli: string
-            // path: string
+            $table->string('nama_asli');
+            $table->string('path');
             $table->timestamps();
         });
     }
