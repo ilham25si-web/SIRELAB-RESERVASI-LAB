@@ -25,6 +25,10 @@
             <div>{{ session('sukses') }}</div>
         @endif
         @yield('isi')
+
+        @if (session('error'))
+            <div>{{ session('error') }}</div>
+        @endif
     </main>
 </body>
 </html>

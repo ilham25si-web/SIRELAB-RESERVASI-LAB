@@ -37,3 +37,11 @@ Route::get('/laboratorium/{laboratorium}/reservasi', [ReservasiController::class
 Route::post('/laboratorium/{laboratorium}/reservasi', [ReservasiController::class, 'store'])
     ->name('reservasi.store')
     ->middleware(['auth', 'role:pengguna']);
+
+Route::get('/reservasi', [ReservasiController::class, 'index'])
+    ->name('reservasi.index')
+    ->middleware(['auth', 'role:pengguna']);
+    
+Route::patch('/reservasi/{reservasi}/batal', [ReservasiController::class, 'batal'])
+    ->name('reservasi.batal')
+    ->middleware(['auth', 'role:pengguna']);

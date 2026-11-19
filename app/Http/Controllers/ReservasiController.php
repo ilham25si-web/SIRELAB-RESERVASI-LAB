@@ -85,4 +85,32 @@ class ReservasiController extends Controller
         ->route('laboratorium.show', $laboratorium->id_lab)
         ->with('sukses', 'Reservasi berhasil diajukan, menunggu verifikasi admin.');
 }
+
+    public function index(Request $request)
+    {
+        $reservasi = Reservasi::where('id_user', Auth::user()->id_user)
+            ->with('laboratorium', 'lampiran')
+            ->latest()
+            ->paginate(5);
+
+        return view('reservasi.index', compact('reservasi'));
+    }
+
+    public function batal(Reservasi $reservasi)
+    {
+        // Pastikan reservasi milik user yang sedang login
+        if ($reservasi->id_user !== Auth::user()->id_user) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Hanya bisa membatalkan reservasi yang statusnya "menunggu"
+        if ($reservasi->status !== 'menunggu') {
+            return redirect()->back()->with('error', 'Reservasi tidak dapat dibatalkan karena sudah diverifikasi.');
+        }
+
+        $reservasi->status = 'dibatalkan';
+        $reservasi->save();
+
+        return redirect()->back()->with('sukses', 'Reservasi berhasil dibatalkan.');
+    }
 }
