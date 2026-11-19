@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaboratoriumController;
 use App\Http\Controllers\ReservasiController;
+use App\Http\Controllers\AdminReservasiController;
 
 
 Route::get('/', function () {
@@ -45,3 +46,10 @@ Route::get('/reservasi', [ReservasiController::class, 'index'])
 Route::patch('/reservasi/{reservasi}/batal', [ReservasiController::class, 'batal'])
     ->name('reservasi.batal')
     ->middleware(['auth', 'role:pengguna']);
+
+Route::middleware(['auth', 'role:admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/reservasi', [AdminReservasiController::class, 'index'])->name('reservasi.index');
+    });
