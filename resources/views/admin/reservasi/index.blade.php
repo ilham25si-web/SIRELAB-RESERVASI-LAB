@@ -25,6 +25,7 @@
                 <th>Jam</th>
                 <th>Peserta</th>
                 <th>Status</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -36,9 +37,25 @@
                     <td>{{ substr($r->jam_mulai, 0, 5) }} - {{ substr($r->jam_selesai, 0, 5) }}</td>
                     <td>{{ $r->jumlah_peserta }}</td>
                     <td>{{ $r->status }}</td>
+                    <td>
+                    @if ($r->status === 'menunggu')
+                            <form method="POST" action="{{ route('admin.reservasi.setujui', $r->id_reservasi) }}">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit">Setujui</button>
+                        </form>
+
+                            <form method="POST" action="{{ route('admin.reservasi.tolak', $r->id_reservasi) }}">
+                        @csrf
+                            @method('PATCH')
+                            <input type="text" name="catatan_admin" placeholder="Alasan penolakan" required>
+                            <button type="submit">Tolak</button>
+                            </form>
+                        @endif
+                    </td>
                 </tr>
             @empty
-                <tr><td colspan="6">Tidak ada reservasi.</td></tr>
+                <tr><td colspan="7">Tidak ada reservasi.</td></tr>
             @endforelse
         </tbody>
     </table>
