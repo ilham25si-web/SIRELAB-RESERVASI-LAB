@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaboratoriumController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\AdminReservasiController;
+use App\Http\Controllers\AdminLaboratoriumController;
 
 
 Route::get('/', function () {
@@ -54,6 +55,7 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('/reservasi', [AdminReservasiController::class, 'index'])->name('reservasi.index');
         Route::patch('/reservasi/{reservasi}/setujui', [AdminReservasiController::class, 'setujui'])->name('reservasi.setujui');
         Route::patch('/reservasi/{reservasi}/tolak', [AdminReservasiController::class, 'tolak'])->name('reservasi.tolak');
+        Route::resource('laboratorium', AdminLaboratoriumController::class)->except('show');
     });
 
 Route::patch('/reservasi/{reservasi}/setujui', [AdminReservasiController::class, 'setujui'])->name('reservasi.setujui');
