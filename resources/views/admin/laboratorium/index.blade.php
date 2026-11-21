@@ -35,7 +35,7 @@
                     <td>
                         <a href="{{ route('admin.laboratorium.edit', $l->id_lab) }}">Edit</a>
                         <a href="{{ route('admin.laboratorium.fasilitas', $l->id_lab) }}">Fasilitas</a>
-
+                        <a href="{{ route('admin.laboratorium.jadwal.index', $l->id_lab) }}">Jadwal</a>
                         <form method="POST" action="{{ route('admin.laboratorium.destroy', $l->id_lab) }}"
                               onsubmit="return confirm('Yakin hapus laboratorium ini?')" style="display:inline">
                             @csrf
