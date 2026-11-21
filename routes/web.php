@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminReservasiController;
 use App\Http\Controllers\AdminLaboratoriumController;
 use App\Http\Controllers\AdminFasilitasController;
 use App\Http\Controllers\AdminJadwalController;
+use App\Http\Controllers\AdminLaporanController;
 
 
 Route::get('/', function () {
@@ -71,6 +72,10 @@ Route::middleware(['auth', 'role:admin'])
         Route::resource('laboratorium.jadwal', AdminJadwalController::class)
             ->shallow()
             ->except('show');
+
+        Route::get('laporan', [AdminLaporanController::class, 'index'])->name('laporan.index');
+        Route::post('laporan', [AdminLaporanController::class, 'buat'])->name('laporan.buat');
+        Route::get('laporan/{laporan}', [AdminLaporanController::class, 'show'])->name('laporan.show');
     });
 
 Route::patch('/reservasi/{reservasi}/setujui', [AdminReservasiController::class, 'setujui'])->name('reservasi.setujui');

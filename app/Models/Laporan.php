@@ -10,6 +10,12 @@ public $table = 'laporan';
 public $primaryKey = 'id_laporan';
 public $timestamps = false;
 protected $fillable = ['id_user', 'periode_awal', 'periode_akhir', 'tanggal_cetak'];
+protected $casts = [
+    'periode_awal' => 'date',
+    'periode_akhir' => 'date',
+    'tanggal_cetak' => 'datetime',
+];
+
 
 public function user()
 {
