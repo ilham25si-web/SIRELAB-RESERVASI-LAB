@@ -61,6 +61,11 @@ Route::middleware(['auth', 'role:admin'])
         Route::resource('fasilitas', AdminFasilitasController::class)
             ->except('show')
             ->parameters(['fasilitas' => 'fasilitas']);
+
+        Route::get('/laboratorium/{laboratorium}/fasilitas', [AdminLaboratoriumController::class, 'fasilitas'])
+            ->name('laboratorium.fasilitas');
+        Route::put('/laboratorium/{laboratorium}/fasilitas', [AdminLaboratoriumController::class, 'simpanFasilitas'])
+            ->name('laboratorium.fasilitas.simpan');
     });
 
 Route::patch('/reservasi/{reservasi}/setujui', [AdminReservasiController::class, 'setujui'])->name('reservasi.setujui');

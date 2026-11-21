@@ -15,6 +15,7 @@
                 <th>Lokasi</th>
                 <th>Kapasitas</th>
                 <th>Status</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -31,9 +32,19 @@
                     <td>{{ $l->lokasi }}</td>
                     <td>{{ $l->kapasitas }}</td>
                     <td>{{ $l->status }}</td>
+                    <td>
+                        <a href="{{ route('admin.laboratorium.edit', $l->id_lab) }}">Edit</a>
+                        <a href="{{ route('admin.laboratorium.fasilitas', $l->id_lab) }}">Fasilitas</a>
+
+                        <form method="POST" action="{{ route('admin.laboratorium.destroy', $l->id_lab) }}"
+                              onsubmit="return confirm('Yakin hapus laboratorium ini?')" style="display:inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Hapus</button>
+                        </form>
                 </tr>
             @empty
-                <tr><td colspan="5">Belum ada laboratorium.</td></tr>
+                <tr><td colspan="6">Belum ada laboratorium.</td></tr>
             @endforelse
         </tbody>
     </table>
