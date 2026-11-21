@@ -7,4 +7,5 @@
     <p>Halo, {{ auth()->user()->nama }}</p>
     <p><a href="{{ route('admin.reservasi.index') }}">Kelola Reservasi</a></p>
     <p><a href="{{ route('admin.laboratorium.index') }}">Kelola Laboratorium</a></p>
+    <p><a href="{{ route('admin.fasilitas.index') }}">Kelola Fasilitas</a></p>
 @endsection

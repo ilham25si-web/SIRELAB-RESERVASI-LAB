@@ -6,6 +6,7 @@ use App\Http\Controllers\LaboratoriumController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\AdminReservasiController;
 use App\Http\Controllers\AdminLaboratoriumController;
+use App\Http\Controllers\AdminFasilitasController;
 
 
 Route::get('/', function () {
@@ -56,7 +57,15 @@ Route::middleware(['auth', 'role:admin'])
         Route::patch('/reservasi/{reservasi}/setujui', [AdminReservasiController::class, 'setujui'])->name('reservasi.setujui');
         Route::patch('/reservasi/{reservasi}/tolak', [AdminReservasiController::class, 'tolak'])->name('reservasi.tolak');
         Route::resource('laboratorium', AdminLaboratoriumController::class)->except('show');
+
+        Route::resource('fasilitas', AdminFasilitasController::class)
+            ->except('show')
+            ->parameters(['fasilitas' => 'fasilitas']);
     });
 
 Route::patch('/reservasi/{reservasi}/setujui', [AdminReservasiController::class, 'setujui'])->name('reservasi.setujui');
 Route::patch('/reservasi/{reservasi}/tolak', [AdminReservasiController::class, 'tolak'])->name('reservasi.tolak');
+
+Route::resource('fasilitas', AdminFasilitasController::class)
+    ->except('show')
+    ->parameters(['fasilitas' => 'fasilitas']);
