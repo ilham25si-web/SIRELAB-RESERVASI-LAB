@@ -18,6 +18,13 @@
         </form>
     </div>
     @endauth
+    @guest
+    <div>
+        <a href="{{ route('laboratorium.index') }}">Laboratorium</a>
+        <a href="{{ route('login') }}">Masuk</a>
+        <a href="{{ route('register') }}">Daftar</a>
+    </div>
+@endguest
     </header>
 
     <main>

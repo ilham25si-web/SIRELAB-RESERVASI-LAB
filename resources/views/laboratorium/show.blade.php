@@ -23,7 +23,13 @@
         @empty
             <li>Tidak ada jadwal tetap.</li>
         @endforelse
+        @auth
+        <a href="{{ route('reservasi.create', $laboratorium->id_lab) }}">Reservasi lab ini</a>
+        @else
+        <a href="{{ route('login') }}">Masuk untuk reservasi</a>
+        @endauth
     </ul>
+
     <a href="{{ route('reservasi.create', $laboratorium->id_lab) }}">Reservasi lab ini</a>
     <a href="{{ route('laboratorium.index') }}">Kembali</a>
 @endsection

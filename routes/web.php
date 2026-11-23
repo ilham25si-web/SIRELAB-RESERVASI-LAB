@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminLaboratoriumController;
 use App\Http\Controllers\AdminFasilitasController;
 use App\Http\Controllers\AdminJadwalController;
 use App\Http\Controllers\AdminLaporanController;
+use App\Http\Controllers\RegisterController;
 
 
 Route::get('/', function () {
@@ -17,6 +18,9 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.proses');
+
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.proses');
 
 Route::get('/admin', function () {
     return view('admin.dashboard');
@@ -30,8 +34,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Laboratorium routes
 Route::get('/laboratorium', [LaboratoriumController::class, 'index'])
-    ->name('laboratorium.index')
-    ->middleware(['auth', 'role:pengguna']);
+    ->name('laboratorium.index');
 
 Route::get('/laboratorium/{laboratorium}', [LaboratoriumController::class, 'show'])->name('laboratorium.show');
 
@@ -46,7 +49,7 @@ Route::post('/laboratorium/{laboratorium}/reservasi', [ReservasiController::clas
 Route::get('/reservasi', [ReservasiController::class, 'index'])
     ->name('reservasi.index')
     ->middleware(['auth', 'role:pengguna']);
-    
+
 Route::patch('/reservasi/{reservasi}/batal', [ReservasiController::class, 'batal'])
     ->name('reservasi.batal')
     ->middleware(['auth', 'role:pengguna']);
