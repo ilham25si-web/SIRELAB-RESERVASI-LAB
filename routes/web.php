@@ -13,8 +13,13 @@ use App\Http\Controllers\RegisterController;
 
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $labs = \App\Models\Laboratorium::where('status', 'aktif')
+        ->orderBy('id_lab', 'desc')
+        ->take(3)
+        ->get();
+
+    return view('beranda', compact('labs'));
+})->name('beranda');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.proses');

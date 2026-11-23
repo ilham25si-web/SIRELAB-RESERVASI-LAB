@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <strong>Reservasi Laboratorium PCR</strong>
+        <strong><a href="{{ route('beranda') }}">Reservasi Laboratorium PCR</a></strong>
         @auth
         <div>
         <span>{{ auth()->user()->nama }}</span>
