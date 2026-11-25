@@ -1,0 +1,68 @@
+<?php
+
+return [
+    'required'       => ':attribute wajib diisi.',
+    'string'         => ':attribute harus berupa teks.',
+    'email'          => ':attribute harus berupa alamat email yang valid.',
+    'unique'         => ':attribute sudah terdaftar.',
+    'confirmed'      => 'Konfirmasi :attribute tidak cocok.',
+    'date'           => ':attribute bukan tanggal yang valid.',
+    'after'          => ':attribute harus setelah :date.',
+    'after_or_equal' => ':attribute harus pada atau setelah :date.',
+    'in'             => ':attribute yang dipilih tidak valid.',
+    'integer'        => ':attribute harus berupa angka bulat.',
+    'numeric'        => ':attribute harus berupa angka.',
+    'array'          => ':attribute harus berupa daftar.',
+    'file'           => ':attribute harus berupa berkas.',
+    'image'          => ':attribute harus berupa gambar.',
+    'mimes'          => ':attribute harus bertipe: :values.',
+    'exists'         => ':attribute yang dipilih tidak valid.',
+    'uploaded'       => ':attribute gagal diunggah.',
+
+    'max' => [
+        'numeric' => ':attribute tidak boleh lebih dari :max.',
+        'file'    => ':attribute tidak boleh lebih dari :max KB.',
+        'string'  => ':attribute tidak boleh lebih dari :max karakter.',
+        'array'   => ':attribute tidak boleh lebih dari :max item.',
+    ],
+    'min' => [
+        'numeric' => ':attribute minimal :min.',
+        'file'    => ':attribute minimal :min KB.',
+        'string'  => ':attribute minimal :min karakter.',
+        'array'   => ':attribute minimal :min item.',
+    ],
+
+    'custom' => [
+        'tanggal' => [
+            'after_or_equal' => 'Tanggal tidak boleh sebelum hari ini.',
+        ],
+    ],
+
+    'attributes' => [
+        'nama'                  => 'nama',
+        'identitas'             => 'NIM',
+        'email'                 => 'email',
+        'no_hp'                 => 'nomor HP',
+        'password'              => 'kata sandi',
+        'password_confirmation' => 'ulangi kata sandi',
+        'nama_lab'              => 'nama laboratorium',
+        'lokasi'                => 'lokasi',
+        'kapasitas'             => 'kapasitas',
+        'deskripsi'             => 'deskripsi',
+        'status'                => 'status',
+        'foto'                  => 'foto',
+        'nama_fasilitas'        => 'nama fasilitas',
+        'hari'                  => 'hari',
+        'jam_mulai'             => 'jam mulai',
+        'jam_selesai'           => 'jam selesai',
+        'keterangan'            => 'keterangan',
+        'tanggal'               => 'tanggal',
+        'keperluan'             => 'keperluan',
+        'jumlah_peserta'        => 'jumlah peserta',
+        'lampiran'              => 'lampiran',
+        'lampiran.*'            => 'lampiran',
+        'periode_awal'          => 'periode awal',
+        'periode_akhir'         => 'periode akhir',
+        'catatan_admin'         => 'catatan',
+    ],
+];

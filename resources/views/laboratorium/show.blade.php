@@ -20,16 +20,16 @@
     <ul>
         @forelse ($laboratorium->jadwal as $j)
             <li>{{ $j->hari }}, {{ substr($j->jam_mulai, 0, 5) }}-{{ substr($j->jam_selesai, 0, 5) }}: {{ $j->keterangan }}</li>
-        @empty
-            <li>Tidak ada jadwal tetap.</li>
-        @endforelse
-        @auth
-        <a href="{{ route('reservasi.create', $laboratorium->id_lab) }}">Reservasi lab ini</a>
-        @else
-        <a href="{{ route('login') }}">Masuk untuk reservasi</a>
-        @endauth
-    </ul>
+            @empty
+        <li>Tidak ada jadwal tetap.</li>
+    @endforelse
+</ul>
 
+@auth
     <a href="{{ route('reservasi.create', $laboratorium->id_lab) }}">Reservasi lab ini</a>
-    <a href="{{ route('laboratorium.index') }}">Kembali</a>
+@else
+    <a href="{{ route('login') }}">Masuk untuk reservasi</a>
+@endauth
+
+<a href="{{ route('laboratorium.index') }}">Kembali</a>
 @endsection
