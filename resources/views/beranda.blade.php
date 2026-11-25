@@ -26,14 +26,10 @@
 
     <h2>Laboratorium Tersedia</h2>
     @forelse ($labs as $lab)
-        <div>
-            <h3>{{ $lab->nama_lab }}</h3>
-            <p>{{ $lab->lokasi }} - kapasitas {{ $lab->kapasitas }} orang</p>
-            <a href="{{ route('laboratorium.show', $lab->id_lab) }}">Lihat detail</a>
-        </div>
-    @empty
-        <p>Belum ada laboratorium.</p>
-    @endforelse
+    <x-lab-card :lab="$lab" />
+@empty
+    <p>Belum ada laboratorium.</p>
+@endforelse
 
     <h2>Cara Memesan</h2>
     <ol>

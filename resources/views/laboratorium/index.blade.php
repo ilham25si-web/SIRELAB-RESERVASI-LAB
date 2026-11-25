@@ -12,15 +12,10 @@
     </form>
 
     @forelse ($labs as $lab)
-        <div>
-            <h3>{{ $lab->nama_lab }}</h3>
-            <p>{{ $lab->lokasi }} - kapasitas {{ $lab->kapasitas }} orang</p>
-            <p>{{ $lab->deskripsi }}</p>
-            <a href="{{ route('laboratorium.show', $lab->id_lab) }}">Lihat detail</a>
-        </div>
-    @empty
-        <p>Tidak ada laboratorium yang cocok.</p>
-    @endforelse
+    <x-lab-card :lab="$lab" :deskripsi="true" />
+@empty
+    <p>Tidak ada laboratorium yang cocok.</p>
+@endforelse
 
     {{ $labs->links() }}
 @endsection

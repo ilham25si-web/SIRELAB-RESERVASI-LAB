@@ -26,9 +26,9 @@
 </ul>
 
 @auth
-    <a href="{{ route('reservasi.create', $laboratorium->id_lab) }}">Reservasi lab ini</a>
+    <a class="btn" href="{{ route('reservasi.create', $laboratorium->id_lab) }}">Reservasi lab ini</a>
 @else
-    <a href="{{ route('login') }}">Masuk untuk reservasi</a>
+    <a class="btn" href="{{ route('login') }}">Masuk untuk reservasi</a>
 @endauth
 
 <a href="{{ route('laboratorium.index') }}">Kembali</a>

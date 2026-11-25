@@ -13,6 +13,9 @@ header {
     background: #12315c;
     color: #fff;
 }
+header a { color: #fff; text-decoration: none; }
+header a:hover { text-decoration: underline; }
+
 
 header form {
     margin: 0;
@@ -32,3 +35,45 @@ main {
     margin: 24px auto;
     padding: 0 16px;
 }
+
+header div { display: flex; align-items: center; gap: 16px; }
+
+/* Alert flash */
+.alert { padding: 10px 14px; border-radius: 6px; margin-bottom: 16px; }
+.alert-sukses { background: #e6f6ec; color: #14532d; border: 1px solid #86d4a4; }
+.alert-error  { background: #fdecec; color: #7f1d1d; border: 1px solid #f1a5a5; }
+
+/* Tabel */
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { border: 1px solid #d9dee7; padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #eef2f8; }
+
+/* Form */
+form div { margin-bottom: 12px; }
+label { display: block; margin-bottom: 4px; font-weight: 600; }
+input, select, textarea {
+    padding: 8px 10px; border: 1px solid #c5ccd8; border-radius: 6px; font: inherit;
+}
+form div input, form div select, form div textarea { width: 100%; max-width: 420px; }
+small { display: block; margin-top: 4px; color: #b42318; }
+button:hover { opacity: .9; }
+
+/* Pagination */
+.pagination { display: flex; gap: 4px; list-style: none; padding: 0; margin: 16px 0; }
+.pagination a, .pagination span {
+    display: block; padding: 6px 10px; border: 1px solid #c5ccd8; border-radius: 6px;
+    text-decoration: none; color: #12315c;
+}
+.pagination .active span, .pagination .active a { background: #12315c; color: #fff; }
+.pagination .disabled span { color: #9aa4b5; }
+
+/* Cetak */
+@media print {
+    header, button, .no-print { display: none; }
+}
+
+a.btn { display: inline-block; background: #0e8f8a; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; }
+
+td a { margin-right: 8px; }
+td form { display: inline; margin: 0; }
+button.hapus { background: #b42318; }
