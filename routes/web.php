@@ -86,10 +86,5 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('laporan/{laporan}', [AdminLaporanController::class, 'show'])->name('laporan.show');
     });
 
-Route::patch('/reservasi/{reservasi}/setujui', [AdminReservasiController::class, 'setujui'])->name('reservasi.setujui');
-Route::patch('/reservasi/{reservasi}/tolak', [AdminReservasiController::class, 'tolak'])->name('reservasi.tolak');
 
-Route::resource('fasilitas', AdminFasilitasController::class)
-    ->except('show')
-    ->parameters(['fasilitas' => 'fasilitas']);
 
