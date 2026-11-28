@@ -6,7 +6,7 @@ use App\Models\Laboratorium;
 use Illuminate\Http\Request;
 use App\Models\Fasilitas;
 use App\Models\simpanFasilitas;
-use Illuminate\support\facedes\Storage;
+use Illuminate\Support\Facades\Storage;
 
 class AdminLaboratoriumController extends Controller
 {
